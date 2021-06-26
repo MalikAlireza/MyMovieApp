@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.flickerapp.Model.Movie;
 import com.example.flickerapp.MovieAdapter;
 import com.example.flickerapp.R;
+import com.example.flickerapp.Repositry.APICall;
 import com.example.flickerapp.Utilities.LoggerHelper;
 
 import org.json.JSONArray;
@@ -43,10 +44,8 @@ public class MainActivity extends AppCompatActivity {
     MovieAdapter adapter = new MovieAdapter(list_movies, this);
     Boolean lockOnLoad = false;
 
+    APICall apiCall;
 
-    private RequestQueue mRequestQueue;
-    private StringRequest mStringRequest;
-    private String url = "http://www.mocky.io/v2/597c41390f0000d002f4dbd1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         this.addListener();
 
-        sendAndRequestResponse();
+        apiCall=new APICall(this,"car");
     }
 
      void addListener(){
@@ -93,28 +92,6 @@ public class MainActivity extends AppCompatActivity {
          } , 2000);
      }
 
-    private void sendAndRequestResponse() {
 
-        //RequestQueue initialized
-        mRequestQueue = Volley.newRequestQueue(this);
-
-        //String Request initialized
-        mStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                Toast.makeText(getApplicationContext(),"Response :" + response.toString(), Toast.LENGTH_LONG).show();//display the response on screen
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Log.i(TAG,"Error :" + error.toString());
-            }
-        });
-
-        mRequestQueue.add(mStringRequest);
-    }
 
 }
