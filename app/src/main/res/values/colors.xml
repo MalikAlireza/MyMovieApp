@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="textcolorblack">#3C3939</color>
+    <color name="ratingstarcolor">#40C4FF</color>
+    <color name="castingTitleColor">#BFBFBF</color>
+    <color name="castingbackground">#86E8E8E8</color>
+
 </resources>
